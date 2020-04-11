@@ -38,12 +38,11 @@ class MyApp extends StatelessWidget {
         '/getqr':(context) => GetQR(),
         '/profile':(context) => Profile(),
         '/editprofile':(context) => EditProfile(),
-        '/setting': (context) => SettingPage()
+        '/setting':(context) => SettingPage(),
       },
       title: 'Quizzes',
       theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
-
+        primarySwatch: Colors.blue,
       ),
       home: SplashPage(),
     );
