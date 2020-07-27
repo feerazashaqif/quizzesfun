@@ -3,13 +3,16 @@
 Project title: Quizzes-Fun
 
 Group Members:
--	Feeraz A'shaqif bin Abdul Razak
--	Muhammad Afiq Ikmal bin Anis
--	Miraj Ahmed
--	Noverio
+-	Feeraz A'shaqif bin Abdul Razak (Sign Up for Teacher/Student)
+-	Muhammad Afiq Ikmal bin Anis (Log In & Edit Profile for Teacher/Student)
+-	Miraj Ahmed (Create Quiz for Teacher)
+-	Noverio (Answer Quiz for Student)
 
-Video URL: https://drive.google.com/drive/folders/1o1qhUfC3w8wHdwixlLLpafeH2MnTrATI?usp=sharing
-A new Flutter project.
+Note that our source code does not have separated front-end (Flutter) files and back-end files as we did both in related all dart files.
+
+Video URL: https://youtu.be/21TVsGLSI-U
+
+GitHub URL: https://github.com/feerazashaqif/quizzesfun
 
 ## Getting Started
 
