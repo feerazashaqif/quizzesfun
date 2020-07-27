@@ -29,71 +29,66 @@ class GetQRState extends State<GetQR> {
         ),
       ),
       Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.all(50),
-                    child: SingleChildScrollView(
-                        child: Container(
-                            height: 500,
-                            width: 900,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Color.fromRGBO(26, 37, 100, 0.7),
-                            ),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                              Spacer(),    
-                              Spacer(),    
-                                  Text("SEJARAH 101",style: TextStyle(color: Colors.white, fontSize: 30,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic ),),
-                                  Text("by Rogayah Ahmad",style: TextStyle(color: Colors.white, fontSize: 20),),
-                                  Spacer(),
-                                  Container(
-                                    width: 250,
-                                    height: 250,
-                                    child: Image.asset(
-            'assets/qrcode.png',
-            color: Color.fromRGBO(255, 255, 255, 1),
-            colorBlendMode: BlendMode.modulate,
-            fit: BoxFit.cover,
-          ),
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+                padding: EdgeInsets.all(50),
+                child: SingleChildScrollView(
+                    child: Container(
+                        height: 500,
+                        width: 900,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color.fromRGBO(26, 37, 100, 0.7),
+                        ),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Spacer(),
+                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text(
+                                  "Quiz will be uploaded when you press the button below",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
                                   ),
-                            
-                            Spacer(),
-                          Container(
-                            width: 200,
-                            height: 50,
-                            child:   RaisedButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24)),
-                            onPressed: () async {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return new ProfilePage();
-                              }));
-                            },
-                            padding: EdgeInsets.all(10),
-                            color: Colors.deepOrange[200],
-                            splashColor: Color.fromRGBO(40, 20, 40, 10),
-                            child: Center(
-                              child: Text(
-                                "Back to Home",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
-                            ),
-                          ),          
-                          ),
-                          Spacer(),
-                          Spacer(),
-                                                   ]
-                                ))
-                                )
-                                )
-              ])
+                              Spacer(),
+                              Spacer(),
+                              Container(
+                                width: 200,
+                                height: 50,
+                                child: RaisedButton(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(24)),
+                                  onPressed: () async {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return new ProfilePage();
+                                    }));
+                                  },
+                                  padding: EdgeInsets.all(10),
+                                  color: Colors.deepOrange[200],
+                                  splashColor: Color.fromRGBO(40, 20, 40, 10),
+                                  child: Center(
+                                    child: Text(
+                                      "OK? Back to Home",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Spacer(),
+                              Spacer(),
+                            ]))))
+          ])
     ]);
   }
 

@@ -1,13 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:quizzesfun/question.dart';
 import 'package:quizzesfun/sign_up.dart';
 import 'package:quizzesfun/main.dart';
 
 class FindquizPage extends StatefulWidget {
+  final email;
+
+  FindquizPage(this.email);
   @override
   _FindquizPageState createState() => _FindquizPageState();
 }
 
 class _FindquizPageState extends State<FindquizPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _idController = TextEditingController();
+  String id;
+  final db = Firestore.instance;
+
+  void readData() async {
+    await db.collection('Quizzes').document(id).get();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,17 +69,26 @@ class _FindquizPageState extends State<FindquizPage> {
                     height: 40,
                   ),
                   Container(
-                    height: 55,
-                    width: MediaQuery.of(context).size.width * 0.7,
+                    height: 30,
+                    width: MediaQuery.of(context).size.width * 0.5,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(20),
                           bottomRight: Radius.circular(20)),
                       color: Colors.deepOrange[200],
                     ),
-                    child: Text(
-                      "Enter Quiz ID or Scan Quiz \nQR Code To Join Quiz",
-                      style: TextStyle(fontSize: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              "  Enter Quiz Name",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(
@@ -85,14 +108,16 @@ class _FindquizPageState extends State<FindquizPage> {
                                     offset: Offset(0, 10))
                               ]),
                           child: Form(
+                            key: _formKey,
                             child: Column(
                               children: <Widget>[
                                 Container(
                                   padding: EdgeInsets.all(2),
                                   decoration: BoxDecoration(),
                                   child: TextFormField(
+                                    controller: _idController,
                                     decoration: InputDecoration(
-                                        hintText: "Quiz ID",
+                                        hintText: "Quiz Name",
                                         prefixIcon: Icon(
                                           Icons.code,
                                           color: Colors.deepOrange,
@@ -101,6 +126,7 @@ class _FindquizPageState extends State<FindquizPage> {
                                             TextStyle(color: Colors.grey),
                                         border: InputBorder.none),
                                     style: TextStyle(color: Colors.black),
+                                    onSaved: (value) => id = value,
                                   ),
                                 ),
                               ],
@@ -126,7 +152,13 @@ class _FindquizPageState extends State<FindquizPage> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(24)),
                               onPressed: () async {
-                                Navigator.pushNamed(context, '/question');
+                                // Navigator.pushNamed(context, '/question');
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return new QuestionStartPage(
+                                      _idController.text.toString(),
+                                      widget.email.toString());
+                                }));
                               },
                               padding: EdgeInsets.all(12),
                               color: Colors.deepOrange[200],
@@ -135,57 +167,15 @@ class _FindquizPageState extends State<FindquizPage> {
                                 child: Text(
                                   "Enter Quiz",
                                   style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,),
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
                             )),
                         SizedBox(
                           height: 40,
                         ),
-                        Container(
-                          child: Text("or",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                        ),
-                        SizedBox(
-                          height: 50,
-                        ),
-                        Container(
-                            height: 150,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black,
-                                    blurRadius: 50,
-                                    offset: Offset(0, 10))
-                              ],
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.deepOrange[200],
-                            ),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  IconButton(
-                                    alignment: Alignment.topCenter,
-                                    icon: Image.asset(
-                                      "assets/qr.png",
-                                      width: 100,
-                                      height: 100,
-                                    ),
-                                    onPressed: () async {
-                                      Navigator.pushNamed(context, '/scanqr');
-                                    },
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("Scan Now",style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500),)
-                                ]))
                       ]))
                 ]),
           )

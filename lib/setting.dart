@@ -20,6 +20,9 @@ class _SettingPageState extends State<SettingPage> {
           appBar: AppBar(
             leading: BackButton(
               color: Colors.deepOrange[200],
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
             title: Padding(
               padding: const EdgeInsets.only(right: 40.0),
@@ -95,7 +98,7 @@ class _SettingPageState extends State<SettingPage> {
                     },
                   ),
                   ListTile(
-                    leading:Icon(Icons.track_changes), 
+                    leading: Icon(Icons.track_changes),
                     title: Text("Dark Theme"),
                     trailing: Switch(
                       value: darkTheme,
