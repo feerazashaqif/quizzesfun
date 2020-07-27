@@ -8,7 +8,7 @@ Group Members:
 -	Miraj Ahmed (Create Quiz for Teacher)
 -	Noverio (Answer Quiz for Student)
 
-Note that our source code does not have separated front-end (Flutter) files and back-end files as we did both in related all dart files.
+Note that our source code does not have separated front-end (Flutter) files and back-end files as we did both in all related dart files.
 
 Video URL: https://youtu.be/21TVsGLSI-U
 
